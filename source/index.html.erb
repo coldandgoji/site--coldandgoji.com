@@ -7,7 +7,32 @@ layout_class: home
 
   <div class="layout__district district">
 
-    Home Page
+    <%= partial "components/form", :locals => {
+    :modifier => "contact",
+    :heading => "Build your website with us.",
+    :copy => "",
+    :fields => [
+    {
+      :placeholder => "Your Name *",
+      :name => "name",
+      :type => :text
+    },
+    {
+      :placeholder => "Email address *",
+      :name => "email",
+      :type => :email
+    },
+    {
+      :placeholder => "What do you need? *",
+      :name => "message",
+      :type => :textarea
+    },
+    {
+      :placeholder => "Send it to Cold & Goji!",
+      :type => :submit
+    }
+    ]
+    } %>
 
   </div>
 
