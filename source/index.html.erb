@@ -7,6 +7,12 @@ layout_class: home
 
   <div class="layout__district district">
 
+    <% partial "components/hero", :locals => {
+    :modifier => "home",
+    :image => "",
+    :heading => data.site.title
+    } %>
+
     <%= partial "components/form", :locals => {
     :modifier => "contact",
     :heading => "Build your website with us.",
