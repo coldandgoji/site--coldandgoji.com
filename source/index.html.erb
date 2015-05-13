@@ -7,11 +7,19 @@ layout_class: home
 
   <div class="layout__district district">
 
-    <% partial "components/hero", :locals => {
+    <%= partial "components/hero", :locals => {
     :modifier => "home",
     :image => "",
     :heading => data.site.title
     } %>
+
+  </div>
+
+</div>
+
+<div class="layout__region region">
+
+  <div class="layout__district district">
 
     <%= partial "components/form", :locals => {
     :modifier => "contact",
