@@ -24,15 +24,15 @@ layout_class: home
     <%= partial "components/collection--start", :locals => {
       :modifier => "content"
       } %>
-    <% data.copy.each do | content |%>
+    <% data.copy.content.each do | content |%>
       <li class="collection__item">
         <section class="content">
           <h3 class="content__heading"><%= content.heading %></h3>
           <% content.items.each do | item | %>
-            <div class="content__title"><%= item.title %></div>
+            <h4 class="content__title"><%= item.title %></h4>
             <div class="content__copy"><%= item.copy %></div>
+          <% end %>
         </section>
-    <% end %>
       </li>
     <% end %>
     <%= partial "components/collection--end" %>
