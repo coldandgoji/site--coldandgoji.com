@@ -21,6 +21,25 @@ layout_class: home
 
   <div class="layout__district district">
 
+    <%= partial "components/collection--start", :locals => {
+      :modifier => "content"
+      } %>
+
+    <% data.copy.each do | content |%>
+      <li class="collection__item">
+        <section class="collection collection--<%= modifier %>">
+          <h3 class="content__heading"><%= content.heading" %></h3>
+          <% content.items.each do | item | %>
+            <div class="collection__title"><%= content.title %></div>
+            <div class="collection__copy"><%= content.copy %></div>
+        </section>
+    <% end %>
+      </li>
+    <% end %>
+
+    <%= partial "components/collection--end" %>
+  
+ 
     <%= partial "components/form", :locals => {
     :modifier => "contact",
     :heading => "Build your website with us.",
