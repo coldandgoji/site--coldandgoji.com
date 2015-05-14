@@ -24,21 +24,30 @@ layout_class: home
     <%= partial "components/collection--start", :locals => {
       :modifier => "content"
       } %>
-
     <% data.copy.each do | content |%>
       <li class="collection__item">
-        <section class="collection collection--<%= modifier %>">
-          <h3 class="content__heading"><%= content.heading" %></h3>
+        <section class="content">
+          <h3 class="content__heading"><%= content.heading %></h3>
           <% content.items.each do | item | %>
-            <div class="collection__title"><%= content.title %></div>
-            <div class="collection__copy"><%= content.copy %></div>
+            <div class="content__title"><%= item.title %></div>
+            <div class="content__copy"><%= item.copy %></div>
         </section>
     <% end %>
       </li>
     <% end %>
-
     <%= partial "components/collection--end" %>
   
+    <%= partial "components/collection--start", :locals => {
+      :modifier => "process"
+    } %>
+    <% data.process.each do | step | %>
+      <li class="collection__item">
+        <section class="process">
+          <h3 class="process__heading"><%= step.name %></h3>
+        </section>
+      </li>
+    <% end %>
+    <%= partial "components/collection--end" %>
  
     <%= partial "components/form", :locals => {
     :modifier => "contact",
