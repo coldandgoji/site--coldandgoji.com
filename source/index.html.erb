@@ -22,33 +22,54 @@ layout_class: home
   <div class="layout__district district">
 
     <%= partial "components/collection--start", :locals => {
-      :modifier => "content"
+      :modifier => "content",
+      :heading => data.content.heading
       } %>
-    <% data.copy.content.each do | content |%>
+    <% data.content.items.each do | content |%>
       <li class="collection__item">
         <section class="content">
-          <h3 class="content__heading"><%= content.heading %></h3>
-          <% content.items.each do | item | %>
-            <h4 class="content__title"><%= item.title %></h4>
-            <div class="content__copy"><%= item.copy %></div>
-          <% end %>
+            <h4 class="content__title"><%= content.title %></h4>
+            <div class="content__copy"><%= content.copy %></div>
         </section>
       </li>
     <% end %>
     <%= partial "components/collection--end" %>
   
     <%= partial "components/collection--start", :locals => {
-      :modifier => "process"
+      :modifier => "process",
+      :heading => data.process.heading,
+      :copy => data.process.copy
     } %>
-    <% data.process.each do | step | %>
+    <% data.process.items.each do | item | %>
       <li class="collection__item">
         <section class="process">
-          <h3 class="process__heading"><%= step.name %></h3>
+          <div class="process__inner">
+          <%= image_tag item.src, :class => 'process__image' %>
+          <h2 class="process__heading"><%= item.name %></h2>
+          </div>
         </section>
       </li>
     <% end %>
     <%= partial "components/collection--end" %>
  
+    <%= partial "components/collection--start", :locals => {
+      :modifier => "app",
+      :heading => "We use these."
+    } %>
+    <% data.app.each do | app | %>
+      <li class="collection__item">
+        <section class="app">
+          <div class="app__inner">
+            <% link_to app.link, :class => 'app__link' do %>
+            <%= image_tag app.src, :class => 'app__image' %>
+          <% end %>
+          </div>
+        </section>
+      </li>
+    <% end %>
+
+    <%= partial "components/collection--end" %>
+
     <%= partial "components/form", :locals => {
     :modifier => "contact",
     :heading => "Build your website with us.",
