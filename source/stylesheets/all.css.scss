@@ -1,7 +1,8 @@
 @import "../nautilus/nautilus";
 
-@include nt-font-face('asfalto', '/fonts/asfalto/asfalto', '');
-@include nt-font-face('fontello', '/fonts/fontello/fontello', '7885012');
+
+@import url(http://fonts.googleapis.com/css?family=Abril+Fatface);
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif);
 
 @mixin nt-hero($modifier) {
 
@@ -60,25 +61,11 @@
   }
 }
 
-.layout {
-
-  &.layout--home {
-
-    .layout__region {
-
-      &:nth-child(2) {
-        @include nt-background(white, .5);
-        @include padding(null null 5em null);
-      }
-    }
-  }
-}
-
 .hero {
 
   &.hero--home {
 
-    background-image:url('http://i.imgur.com/UGLoZCw.png');
+    background-size: cover;
 
     @include nt-hero("no-cta");
     @include nt-hero("no-scroll");
@@ -91,26 +78,24 @@
     }
 
     .hero__heading {
-      font-family: 'asfalto';
-      font-size: 4em;
-      letter-spacing: .15em;
-      text-transform: uppercase;
       color: white;
+      font-size: 6em;
+      font-family: 'Abril Fatface', cursive;
     }
 
-    @include media($mq-lap) {
-//    @include nt-hero("16:9");
+    @include media($mq-lap-down) {
+      @include nt-hero("16:9");
 
       .hero__heading {
-        font-size: 2em;
+        font-size: 4em;
       }
     }
 
     @include media($mq-desk) {
-//    @include nt-hero("2.4:1");
+      @include nt-hero("2.4:1");
 
       .hero__heading {
-        font-size: 4em;
+        font-size: 7em;
       }
     }
   }
@@ -119,41 +104,46 @@
 .collection {
 
   &.collection--content {
-
+    @include padding(3em null 5em null);
     background: #242425;
-    @include padding(3em 5em 3em 5em);
-    
 
     .collection__inner {
       @include nt-container;
 
       .collection__heading {
         color: #ec6963;
-        font-family: serif;
         text-align: center;
         font-size: 2.5em;
+        font-family: serif;
       }
 
-      .content__title {
-        color: #ec6963;
-        text-align: center;
-        font-size: 1.2em;
-        @include margin(1em null null null);
+      .content {
+        @include span-columns(8);
+        @include shift(2);
+
+        .content__title {
+          @include margin(1em null 1em null);
+          color: #ec6963;
+          text-align: center;
+          font-size: 1.2em;
+          font-weight: 400;
       }
 
       .content__copy {
-        @include margin(1em null null null);
         color: #858586;
+        font-weight: 400;
+        text-align: center;
       }
     }
+  }
 
-    @include media($mq-lap-down) {
+/*  @include media($mq-lap-down) {
 
       .collection__item {
-        @include margin(null null 2em null);
+        @include margin(1em null null null);
 
         &:last-child {
-          @include margin (null null 0 null);
+          @include margin(null null 0 null);
         }
       }
     }
@@ -161,157 +151,172 @@
     @include media ($mq-desk) {
 
       .collection__item {
+        @include margin(1em null null null);
+
+        &:last-child {
+          @include margin(null null 0 null);
+        }
       }
     }
-  }
+*/}
 
   &.collection--process {
-
     background: #3d3d3d;
-    @include padding(3em 5em 3em 5em);
 
     .collection__inner {
-      @include nt-container;
       
-      .collection__heading {
-        font-family: serif;
-        color: #ec6963;
-        text-align: center;
-        font-size: 2.5em;
-      }
-
-      .collection__copy {
-        color: #858586;
-        @include margin(1em null 1em null);
-      }
-
-    }
-
-    .collection__item {
-      @include span-columns(6);
-      @include margin(0);
-
-      .process__inner {
-        @include position(relative, 0 0 0 0);
-
-        .process__image {
-          @include size(100% 17em);
-        }
-        
-        .process__heading {
-          @include position(absolute, 50% 0 0 0);
-          @include fill-parent;
+      .collection__content {
+        @include nt-container;
+        @include padding(3em null null null);
+      
+        .collection__heading {
+          @include span-columns(8);
+          @include shift(2);
+          color: #ec6963;
           text-align: center;
-          color: white;
+          font-size: 2.5em;
           font-family: serif;
-          font-size: 2em;
+        }
+
+        .collection__copy {
+          @include span-columns(8);
+          @include shift(2);
+          @include margin(2em null 3em null);
+          color: #858586;
+          font-weight: 400;
+          text-align: center;
+        }
+      }
+    
+      .collection__list {
+        @include nt-container;
+
+        .collection__item {
+          @include span-columns(6);
+          @include margin(0 0 0 0);
+
+          .process {
+            @include size(100% 20em);
+            @include position(relative, null null null null);
+            background-size: cover;
+
+              .process__inner {
+                @include position(absolute, 50% 0 50% 0);
+
+                .process__heading {
+                  text-align: center;
+                  color: white;
+                  font-size: 2.2em;
+                  font-family: serif;
+              }
+            }
+          }
         }
       }
     }
   }
 
   &.collection--app {
-    @include padding(5em null null null);
+    @include padding(3em null null null);
     background: #3d3d3d;
 
     .collection__inner {
       @include nt-container;
-    }
+    
 
     .collection__heading {
-      font-family: 'asfalto';
-      font-size: 2em;
+      font-size: 3em;
       color: white;
       text-align: center;
-      @include margin(null null 2em null);
+      font-family: serif;
     }
 
     .collection__item {
       @include span-columns(4);
 
       .app__inner {
+        @include margin(4em null null null);
 
         .app__image {
-          @include position(relative, 0 50% 0 50%);
+          @include shift(4);
+          @include position(relative, null null null null);
 
           &:last-child {
             @include margin(null null 5em null);
+            }
           }
         }
       }
-
-     
     }
   }
 }
 
 
 .form {
-  @include padding(5em null null null);
-  @include nt-background(#f09029);
+  @include padding(3em null 5em null);
+  background: #f09029;
 
   .form__inner {
     @include nt-container;
-    @include padding(2em 2em 2em 2em);
-  }
 
-  .form__heading {
-    font-family: serif;
-    font-size: 2em;
-    letter-spacing: .15em;
-    color: black;
-    text-align: center;
-    @include margin(null null 2em null);
-  }
+    .form__heading {
+      @include margin(null null 1em null);
+      font-size: 2.5em;
+      letter-spacing: .07em;
+      color: #3d3d3d;
+      text-align: center;
+      font-family: serif;
+      font-weight: 500;
+    }
 
-  .form__field {
-    @include margin(1em null null null);
-  }
+    .form__field {
+      @include margin(1em null null null);
+    }
 
-  .form__input {
+    .form__input {
+      @include placeholder {
+        color: #bb6a15;
+      }
 
-    &.form__input--text {
-      font-family: 'asfalto';
-      font-size: 1.5em;
-      color: #bb6a15;
+      &.form__input--text {
+        @include size(100% null);
+        @include padding(.5em 1em .5em 1em);
+        @include nt-background(black, .1);
+        font-size: 1.5em;
+        color: #bb6a15;
+      }
+
+      &.form__input--email {
+        @include size(100% null);
+        @include padding(.5em 1em .5em 1em);
+        @include nt-background(black, .1);
+        font-size: 1.5em;
+        color: #bb6a15;
+      }
+
+      &.form__input--textarea {
+        @include size(100% 10em);
+        @include padding(.5em 1em .5em 1em);
+        font-size: 1.5em;
+        color: #bb8a15;
+        @include nt-background(black, .1);
+      }
+    }
+
+    .form__submit {
       @include size(100% null);
       @include padding(.5em 1em .5em 1em);
-      background: #df821f;
-    }
-
-    &.form__input--email {
-      font-family: 'asfalto';
+      @include nt-background(white, .5);
+      @include transition(all 100ms linear);
       font-size: 1.5em;
+      letter-spacing: .15em;
+      text-align: center;
       color: #bb6a15;
-      @include size(100% null);
-      @include padding(.5em 1em .5em 1em);
-      background: #df821f;
-    }
-
-    &.form__input--textarea {
-      font-family: 'asfalto';
-      font-size: 1.5em;
-      color: #bb8a15;
-      @include size(100% 10em);
-      @include padding(.5em 1em .5em 1em);
-      background: #df821f;
-    }
-  }
-
-  .form__submit {
-    font-family: 'asfalto';
-    font-size: 1.5em;
-    letter-spacing: .15em;
-    text-align: center;
-    @include nt-background(white, .5);
-    color: #e17e15;
-    @include transition(all 100ms linear);
-    @include size(100%null);
-    @include padding(.5em 1em .5em 1em);
   
-    &:hover {
-      @include nt-background(#434343, 1);
-      color: white;
+      &:hover {
+        @include nt-background(#434343, .75);
+        color: white;
+      }
     }
   }
 
@@ -322,4 +327,8 @@
       @include shift(3);
     }
   }
+}
+
+.html {
+  font-family: 'Droid Serif', serif;
 }
