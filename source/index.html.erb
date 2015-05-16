@@ -9,7 +9,7 @@ layout_class: home
 
     <%= partial "components/hero", :locals => {
     :modifier => "home",
-    :image => "",
+    :image => "hero.png",
     :heading => data.site.title
     } %>
 
@@ -42,9 +42,8 @@ layout_class: home
     } %>
     <% data.process.items.each do | item | %>
       <li class="collection__item">
-        <section class="process">
+        <section class="process" style="background-image:url('/media/images/<%= item.src %>');">
           <div class="process__inner">
-          <%= image_tag item.src, :class => 'process__image' %>
           <h2 class="process__heading"><%= item.name %></h2>
           </div>
         </section>
